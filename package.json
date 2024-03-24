@@ -1,0 +1,20 @@
+{
+  "name": "httpproto",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --force",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "@babylonjs/core": "^6.30.0"
+  },
+  "devDependencies": {
+    "@babylonjs/core": "^6.30.0",
+    "@babylonjs/inspector": "^6.33.1",
+    "@babylonjs/loaders": "^6.33.1",
+    "vite": "^5.1.4"
+  }
+}
