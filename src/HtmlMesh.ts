@@ -17,7 +17,7 @@ export default class HtmlMesh {
         this.texture.hasAlpha = true;
 
         // create plane
-        this.mesh = MeshBuilder.CreatePlane("plane", { height: 5, width: 5 }, scene);
+        this.mesh = MeshBuilder.CreatePlane("plane", { height: this.texture.height * 0.01, width: this.texture.width * 0.01 }, scene);
         this.material = new StandardMaterial("Mat", scene);
 
         // create material
