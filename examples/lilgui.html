@@ -30,9 +30,9 @@
     <script type="importmap">
         {
             "imports": {
-                "@babylonjs/core": "https://cdn.jsdelivr.net/npm/babylonjs@6.30.0/babylon.min.js",
+                "@babylonjs/core": "https://cdn.jsdelivr.net/npm/@babylonjs/core@6.48.1/+esm",
                 "bjs-xr-html-mesh": "https://cdn.jsdelivr.net/gh/apowers313/bjs-xr-html-mesh@main/dist/bjs-xr-html-mesh.js",
-                "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.19.2/dist/lil-gui.umd.min.js"
+                "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.19.2/+esm"
             }
         }
     </script>
@@ -41,8 +41,9 @@
     <script async type="module">
         import { HtmlMesh } from "bjs-xr-html-mesh";
         import GUI from 'lil-gui';
+        import { Engine, Scene, FreeCamera, Vector3, HemisphericLight } from "@babylonjs/core";
         const canvas = document.getElementById("renderCanvas"); // Get the canvas element
-        const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+        const engine = new Engine(canvas, true); // Generate the BABYLON 3D engine
 
         // Add your code here matching the playground format
         var createScene = async function () {
@@ -71,19 +72,19 @@
             gui.domElement.style.visibility = 'hidden';
 
             // This creates a basic Babylon Scene object (non-mesh)
-            var scene = new BABYLON.Scene(engine);
+            var scene = new Scene(engine);
 
             // This creates and positions a free camera (non-mesh)
-            var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+            var camera = new FreeCamera("camera1", new Vector3(0, 5, -10), scene);
 
             // This targets the camera to scene origin
-            camera.setTarget(BABYLON.Vector3.Zero());
+            camera.setTarget(Vector3.Zero());
 
             // This attaches the camera to the canvas
             camera.attachControl(canvas, true);
 
             // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
-            var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+            var light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
 
             // Default intensity is 1. Let's dim the light a small amount
             light.intensity = 0.7;
