@@ -135,16 +135,23 @@ export default class HtmlUi {
         // save canvas or recreate texture
 
         // create new texture
-        // if (this.texture.scale. === c.width)
-        this.texture = new DynamicTexture("HTML UI", c, this.scene);
-        this.texture.hasAlpha = true;
-        this.material.diffuseTexture = this.texture;
-        // set location of plane so that some part of it stays in the same place
-        // through a resize
+        const oldWidth = this.mesh.scaling.x;
+        const newWidth = c.width * this.scalingFactor;
+        const oldHeight = this.mesh.scaling.y;
+        const newHeight = c.height * this.scalingFactor;
+        if (newWidth === oldWidth && newHeight === oldHeight) {
+            (this as any).texture._canvas = c;
+        } else {
+            this.texture = new DynamicTexture("HTML UI", c, this.scene);
+            this.texture.hasAlpha = true;
+            this.material.diffuseTexture = this.texture;
+            // adjust plane size
+            this.mesh.scaling.x = c.width * this.scalingFactor;
+            this.mesh.scaling.y = c.height * this.scalingFactor;
 
-        // adjust plane size
-        this.mesh.scaling.x = c.width * this.scalingFactor;
-        this.mesh.scaling.y = c.height * this.scalingFactor;
+            // TODO: set location of plane so that some part of it stays in the same place
+            // through a resize
+        }
 
         this.texture.update();
 
