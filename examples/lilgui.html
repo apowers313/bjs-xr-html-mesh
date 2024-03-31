@@ -38,8 +38,8 @@
     </script>
     </script>
 
-    <script async type="module">
-        import { HtmlMesh } from "bjs-xr-html-mesh";
+    <script async type="module" async>
+        import { HtmlUi } from "bjs-xr-html-mesh";
         import GUI from 'lil-gui';
         import { Engine, Scene, FreeCamera, Vector3, HemisphericLight } from "@babylonjs/core";
         const canvas = document.getElementById("renderCanvas"); // Get the canvas element
@@ -69,7 +69,7 @@
             gui.add(parameters, 'p', 1, 10, 1).onChange(onChange);
             gui.add(parameters, 'q', 0, 10, 1).onChange(onChange);
             gui.add(parameters, 'thickness', 0, 1).onChange(onChange);
-            gui.domElement.style.visibility = 'hidden';
+            // gui.domElement.style.visibility = 'hidden';
 
             // This creates a basic Babylon Scene object (non-mesh)
             var scene = new Scene(engine);
@@ -90,7 +90,8 @@
             light.intensity = 0.7;
 
             // create a texture from our dummy GUI above
-            new HtmlMesh(gui.domElement, scene);
+            const ui = new HtmlUi(gui.domElement, scene);
+            await ui.init();
 
             // XR
             // const xrHelper = await scene.createDefaultXRExperienceAsync();

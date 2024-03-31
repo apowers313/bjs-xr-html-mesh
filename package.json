@@ -13,9 +13,13 @@
   },
   "devDependencies": {
     "@babylonjs/core": "^6.48.1",
-    "@babylonjs/inspector": "^6.48.1",
+    "@babylonjs/gui": "^6.48.1",
+    "@babylonjs/inspector": "^6.49.0",
     "@babylonjs/loaders": "^6.48.1",
     "lil-gui": "^0.19.2",
     "vite": "^5.1.4"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
   }
 }
